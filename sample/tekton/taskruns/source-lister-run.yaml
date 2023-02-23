@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  generateName: source-liter-run-
+spec:
+  taskRef:
+    name: source-lister
+  workspaces:
+    - name: output
+      persistentVolumeClaim:
+        claimName: bookinfo
