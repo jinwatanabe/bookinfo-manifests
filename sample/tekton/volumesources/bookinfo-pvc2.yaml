@@ -1,26 +1,25 @@
-apiVersion: v1 
-kind: PersistentVolume 
-metadata: 
+apiVersion: v1
+kind: PersistentVolume
+metadata:
   name: bookinfo
-spec: 
-  capacity: 
-    storage: 200Mi
-  accessModes: 
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: cache 
-  gcePersistentDisk: 
+  volumeMode: Filesystem
+  gcePersistentDisk:
     pdName: bookinfo
     fsType: pd-balanced
---- 
-apiVersion: v1 
-kind: PersistentVolumeClaim 
-metadata: 
-  name: bookinfo-pvc
-spec: 
-  accessModes: 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bookinfo
+spec:
+  accessModes:
     - ReadWriteOnce
-  storageClassName: cache 
-  resources: 
-    requests: 
-      storage: 200Mi
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
